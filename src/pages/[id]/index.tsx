@@ -3,7 +3,7 @@ import Head from "next/head";
 import { fetchPage, fetchTable, notion, Row } from "../../utils/notion";
 
 import dayjs from "dayjs";
-import { ArrowLeft } from "react-feather";
+import { ArrowLeft, Search } from "react-feather";
 import Link from "next/link";
 import Header from "../../components/header";
 import { getTagColor } from "../../utils/utils";
@@ -18,6 +18,19 @@ import {
 	getPageTitle,
 } from "notion-utils";
 import dynamic from "next/dynamic";
+import { NotionPageHeader } from "../../components/notionHeader";
+import { trpc } from "../../utils/trpc";
+
+const Modal = dynamic(
+	() =>
+		import("react-notion-x/build/third-party/modal").then((m) => {
+			m.Modal.setAppElement(".notion-viewport");
+			return m.Modal;
+		}),
+	{
+		ssr: false,
+	}
+);
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const id = ctx.params?.id as string;
@@ -102,6 +115,7 @@ const BlogPage: NextPage<{
 		? `${title} | M + D Adventure Blog`
 		: "M + D Adventure Blog";
 
+	const utils = trpc.useContext();
 	return (
 		<>
 			<Head>
@@ -147,12 +161,16 @@ const BlogPage: NextPage<{
 					darkMode={false}
 					previewImages={true}
 					disableHeader={true}
+					searchNotion={async (params) =>
+						await utils.client.query("search.query", { query: params.query })
+					}
 					showTableOfContents={false}
-					header={null}
 					pageTitle={<div />}
 					components={{
 						nextImage: Image,
 						nextLink: Link,
+						// Header: NotionPageHeader,
+						// Modal,
 					}}
 
 					// NOTE: custom images will only take effect if previewImages is true and

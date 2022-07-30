@@ -9,24 +9,17 @@ import Header from "../components/header";
 import { getTagColor } from "../utils/utils";
 import Footer from "../components/footer";
 import Main from "../components/main";
-import { ExtendedRecordMap } from "notion-types";
+import { Block, ExtendedRecordMap } from "notion-types";
+import dynamic from "next/dynamic";
 
 export const getStaticProps: GetStaticProps = async () => {
-	// console.log(recordMap.collection_query);
-	// console.log(Object.values(recordMap.collection_query)?.at(0));
-
-	const [table, page] = await Promise.all([
-		fetchTable("f13fd760a7a548d489d309fb7c17a4d1"),
-		notion.getPage("f13fd760a7a548d489d309fb7c17a4d1"),
-	]);
-
+	const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
 	const data = table.filter((row) => row.Published);
 
 	return {
 		props: {
 			title: "Home",
 			tableData: data,
-			page,
 		},
 		revalidate: 60 * 60, //once every hour
 	};
@@ -35,8 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home: NextPage<{
 	title: string;
 	tableData: Row[];
-	page: ExtendedRecordMap;
-}> = ({ title, tableData, page }) => {
+}> = ({ title, tableData }) => {
 	const [parent] = useAutoAnimate<HTMLDivElement>();
 	return (
 		<>
@@ -46,6 +38,7 @@ const Home: NextPage<{
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
+
 			<Main>
 				<h1 className="text-4xl text-center font-bold pb-20 text-neutral-700">
 					{title}

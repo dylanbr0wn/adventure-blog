@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Search } from "react-feather";
+import { Search as SearchIcon } from "react-feather";
+import { Search } from "react-notion-x";
 import { trpc } from "../utils/trpc";
 
 const Header = ({ blogName }: { blogName?: string }) => {
@@ -41,9 +42,9 @@ const Header = ({ blogName }: { blogName?: string }) => {
 					</>
 				)}
 				<div className="flex-grow"></div>
-				<div className="my-auto" onClick={() => refetch()}>
-					<Search className="h-6 w-6 " />
-				</div>
+				{/* <div className="my-auto" onClick={() => refetch()}>
+					<SearchIcon className="h-6 w-6 " />
+				</div> */}
 			</div>
 		</header>
 	);
