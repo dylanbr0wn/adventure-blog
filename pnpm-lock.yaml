@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@formkit/auto-animate': 1.0.0-beta.1
+  '@headlessui/react': ^1.6.6
   '@tailwindcss/line-clamp': ^0.4.0
   '@trpc/client': ^9.26.2
   '@trpc/next': ^9.26.2
@@ -21,7 +22,8 @@ specifiers:
   postcss: ^8.4.14
   react: 18.2.0
   react-dom: 18.2.0
-  react-feather: ^2.0.10
+  react-hotkeys-hook: ^3.4.7
+  react-icons: ^4.4.0
   react-notion-x: ^6.12.11
   react-query: ^3.39.2
   superjson: ^1.9.1
@@ -31,6 +33,7 @@ specifiers:
 
 dependencies:
   '@formkit/auto-animate': 1.0.0-beta.1_react@18.2.0
+  '@headlessui/react': 1.6.6_biqbaboplfbrettd7655fr4n2y
   '@tailwindcss/line-clamp': 0.4.0_tailwindcss@3.1.6
   '@trpc/client': 9.26.2_@trpc+server@9.26.2
   '@trpc/next': 9.26.2_xhsx62thlmlnuxuaaxygpgzvfy
@@ -43,7 +46,8 @@ dependencies:
   notion-utils: 6.12.9
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-feather: 2.0.10_react@18.2.0
+  react-hotkeys-hook: 3.4.7_biqbaboplfbrettd7655fr4n2y
+  react-icons: 4.4.0_react@18.2.0
   react-notion-x: 6.12.11_twyhzqqpkwvvgrmyeapdo6i4my
   react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
   superjson: 1.9.1
@@ -109,6 +113,17 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@headlessui/react/1.6.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-MFJtmj9Xh/hhBMhLccGbBoSk+sk61BlP6sJe4uQcVMtXZhCgGqd2GyIQzzmsdPdTEWGSF434CBi8mnhR6um46Q==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.9.5:
@@ -2752,15 +2767,6 @@ packages:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
     dev: false
 
-  /react-feather/2.0.10_react@18.2.0:
-    resolution: {integrity: sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==}
-    peerDependencies:
-      react: '>=16.8.6'
-    dependencies:
-      prop-types: 15.8.1
-      react: 18.2.0
-    dev: false
-
   /react-hotkeys-hook/3.4.7_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-+bbPmhPAl6ns9VkXkNNyxlmCAIyDAcWbB76O4I0ntr3uWCRuIQf/aRLartUahe9chVMPj+OEzzfk3CQSjclUEQ==}
     peerDependencies:
@@ -2770,6 +2776,14 @@ packages:
       hotkeys-js: 3.9.4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-icons/4.4.0_react@18.2.0:
+    resolution: {integrity: sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-image/4.0.3_biqbaboplfbrettd7655fr4n2y:

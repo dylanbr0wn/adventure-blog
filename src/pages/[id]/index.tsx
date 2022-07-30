@@ -161,9 +161,6 @@ const BlogPage: NextPage<{
 					darkMode={false}
 					previewImages={true}
 					disableHeader={true}
-					searchNotion={async (params) =>
-						await utils.client.query("search.query", { query: params.query })
-					}
 					showTableOfContents={false}
 					pageTitle={<div />}
 					components={{

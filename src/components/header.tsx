@@ -1,20 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Search as SearchIcon } from "react-feather";
-import { Search } from "react-notion-x";
-import { trpc } from "../utils/trpc";
+import Search from "./search";
 
 const Header = ({ blogName }: { blogName?: string }) => {
 	const router = useRouter();
-
-	const { data, refetch } = trpc.useQuery(["search.query", { query: "" }], {
-		refetchOnMount: false,
-		refetchOnWindowFocus: false,
-		refetchOnReconnect: false,
-		onSuccess: (data) => {
-			console.log(data);
-		},
-	});
 
 	return (
 		<header className="h-14 w-screen fixed top-0 z-10 bg-white">
@@ -42,9 +31,7 @@ const Header = ({ blogName }: { blogName?: string }) => {
 					</>
 				)}
 				<div className="flex-grow"></div>
-				{/* <div className="my-auto" onClick={() => refetch()}>
-					<SearchIcon className="h-6 w-6 " />
-				</div> */}
+				<Search />
 			</div>
 		</header>
 	);
