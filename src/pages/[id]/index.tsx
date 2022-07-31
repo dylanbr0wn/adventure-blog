@@ -18,13 +18,6 @@ import {
 } from "notion-utils";
 import dynamic from "next/dynamic";
 
-// @ts-ignore
-const Collection = dynamic(() =>
-	import("react-notion-x/build/third-party/collection").then(
-		(m) => m.Collection
-	)
-);
-
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const id = ctx.params?.id as string;
 	const recordMap = await notion.getPage(id);
@@ -127,7 +120,9 @@ const BlogPage: NextPage<{
 				<NotionRenderer
 					bodyClassName="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100"
 					recordMap={recordMap}
-					fullPage={true}
+					fullPage={false}
+					showCollectionViewDropdown={false}
+					linkTableTitleProperties={false}
 					darkMode={false}
 					previewImages={true}
 					className="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100"
@@ -137,7 +132,6 @@ const BlogPage: NextPage<{
 					components={{
 						nextImage: Image,
 						nextLink: Link,
-						Collection,
 						// Header: NotionPageHeader,
 						// Modal,
 					}}

@@ -8,6 +8,7 @@ const ThemeSwitch = () => {
 	const { theme, setTheme } = useTheme();
 
 	const transitions = useTransition(theme, {
+		initial: { position: "absolute", opacity: 1, y: 0 },
 		from: { position: "absolute", opacity: 0, y: -10 },
 		enter: { opacity: 1, y: 0 },
 		leave: { opacity: 0, y: -10 },
