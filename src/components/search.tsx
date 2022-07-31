@@ -1,4 +1,4 @@
-import { FiSearch as SearchIcon } from "react-icons/fi";
+import { FiCommand, FiSearch as SearchIcon } from "react-icons/fi";
 import { ImSpinner2 } from "react-icons/im";
 import { IoMdReturnLeft } from "react-icons/io";
 import { trpc } from "../utils/trpc";
@@ -45,9 +45,6 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 		refetchOnMount: true,
 		refetchOnWindowFocus: false,
 		refetchOnReconnect: false,
-		onSuccess(data) {
-			console.log(data);
-		},
 		// enabled: search.length > 0,
 		onSettled: () => setLoading(false),
 	});
@@ -60,9 +57,9 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 
 	return (
 		<>
-			<div className="my-auto flex px-2 py-2 rounded-lg bg-neutral-100 focus-within:bg-neutral-200 hover:bg-neutral-200 transition-colors">
+			<div className="my-auto flex px-2 py-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 dark:focus-within:bg-neutral-700  focus-within:bg-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
 				<input
-					className="h-6 w-full bg-transparent focus-visible:ring-0 outline-none"
+					className="h-6 w-full bg-transparent focus-visible:ring-0 outline-none placeholder:text-neutral-500 dark:placeholder:text-neutral-400"
 					placeholder="Search something.."
 					value={search}
 					onKeyDown={(e) => {
@@ -100,9 +97,9 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 					}}
 				/>
 				{loading ? (
-					<ImSpinner2 className="animate-spin h-6 w-6 text-neutral-500" />
+					<ImSpinner2 className="animate-spin h-6 w-6 text-neutral-500 dark:text-neutral-400" />
 				) : (
-					<SearchIcon className="h-6 w-6 text-neutral-500" />
+					<SearchIcon className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
 				)}
 			</div>
 			<div ref={parent} className="mt-2 flex flex-col space-y-1">
@@ -121,12 +118,14 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 								onChange("");
 								closeModal();
 							}}
-							className={`flex w-full space-y-1 py-3 px-4 rounded-lg hover:bg-neutral-100 items-center ${
-								isSelected ? "bg-neutral-100" : ""
+							className={`flex w-full space-y-1 py-3 px-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 items-center ${
+								isSelected ? "bg-neutral-100 dark:bg-neutral-800" : ""
 							}`}
 						>
 							<div className="flex flex-col text-left h-ful pr-4 flex-grow">
-								<div className=" text-neutral-500 font-bold">{title ?? ""}</div>
+								<div className=" text-neutral-500 dark:text-neutral-400 font-bold">
+									{title ?? ""}
+								</div>
 								{result.highlight?.html ? (
 									<div
 										className="line-clamp-1"
@@ -140,7 +139,7 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 							</div>
 							<div className=" my-auto ">
 								<IoMdReturnLeft
-									className={`my-auto h-5 w-5 text-neutral-500 ${
+									className={`my-auto h-5 w-5 text-neutral-500 dark:text-neutral-400 ${
 										isSelected ? "block" : "hidden"
 									}`}
 								/>
@@ -148,19 +147,30 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 						</button>
 					);
 				})}
-				{(data?.results?.length ?? 0) > 0 && (
-					<div className="text-sm text-neutral-400 py-2 ">
-						{data?.results?.length ?? 0} results
-					</div>
-				)}
+
+				<div className="text-sm text-neutral-400 py-2 w-full text-center">
+					{data?.results?.length ?? 0} results
+				</div>
 			</div>
 		</>
 	);
 };
 
+// hook to check if a user is on macos
+const useIsMac = () => {
+	const [isMac, setIsMac] = React.useState<boolean>(false);
+	React.useEffect(() => {
+		const isMac = navigator.userAgent.includes("Mac");
+		setIsMac(isMac);
+	}, []);
+	return isMac;
+};
+
 const Search = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	// const ref = React.useRef<HTMLInputElement>(null);
+
+	const isMac = useIsMac();
 
 	const closeModal = () => {
 		setIsOpen(false);
@@ -178,9 +188,13 @@ const Search = () => {
 					});
 					// ref.current?.focus();
 				}}
-				className="my-auto flex px-3 py-2 focus-visible:ring-0 outline-none rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors text-neutral-400"
+				className="my-auto space-x-2 flex px-3 py-2 focus-visible:ring-0 outline-none rounded-lg  hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-400"
 			>
-				<div>Search something..</div>
+				<div>Search...</div>
+				<div className="bg-neutral-200 dark:bg-neutral-700 my-auto py-0.5 px-1 rounded text-neutral-500 dark:text-neutral-400 text-xs flex items-center">
+					{isMac ? <FiCommand className="h-3 w-3" /> : <div>Ctrl</div>}
+					<div> + K</div>
+				</div>
 				<SearchIcon className="h-6 w-6 text-neutral-400 ml-2" />
 			</button>
 			<Transition appear show={isOpen} as={React.Fragment}>
@@ -208,7 +222,7 @@ const Search = () => {
 								leaveFrom="opacity-100 scale-100"
 								leaveTo="opacity-0 scale-95"
 							>
-								<Dialog.Panel className="w-[40%] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+								<Dialog.Panel className="w-[40%] transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all">
 									<SearchModalContent closeModal={closeModal} />
 								</Dialog.Panel>
 							</Transition.Child>

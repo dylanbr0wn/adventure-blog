@@ -95,6 +95,6 @@ export const getTagColor = (tag: string) => {
 		case "Multi-Day":
 			return "bg-orange-200 text-orange-700";
 		default:
-			return "bg-gray-200 text-gray-700";
+			return "bg-neutral-200 text-neutral-700";
 	}
 };
