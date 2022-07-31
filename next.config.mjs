@@ -1,5 +1,5 @@
 import { env } from "./src/env/server.mjs";
-
+import { withAxiom } from "next-axiom"
 /**
  * Don't be scared of the generics here.
  * All they do is to give us autocompletion when using this.
@@ -12,7 +12,7 @@ function defineNextConfig(config) {
   return config;
 }
 
-export default defineNextConfig({
+export default withAxiom(defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
@@ -20,4 +20,4 @@ export default defineNextConfig({
       allowFutureImage: true,
     },
   },
-});
+}));

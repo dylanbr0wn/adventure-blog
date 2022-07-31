@@ -19,6 +19,7 @@
     "@trpc/server": "^9.26.2",
     "dayjs": "^1.11.4",
     "next": "12.2.3",
+    "next-axiom": "^0.11.0",
     "next-themes": "^0.2.0",
     "notion-client": "^6.12.12",
     "notion-types": "^6.12.6",

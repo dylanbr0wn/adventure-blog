@@ -14,6 +14,8 @@ import superjson from "superjson";
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
 
+export { reportWebVitals } from "next-axiom";
+
 const MyApp: AppType = ({ Component, pageProps }) => {
 	return (
 		<ThemeProvider attribute="class">

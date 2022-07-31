@@ -17,6 +17,7 @@ specifiers:
   eslint: 8.18.0
   eslint-config-next: 12.2.3
   next: 12.2.3
+  next-axiom: ^0.11.0
   next-themes: ^0.2.0
   notion-client: ^6.12.12
   notion-types: ^6.12.6
@@ -44,6 +45,7 @@ dependencies:
   '@trpc/server': 9.26.2
   dayjs: 1.11.4
   next: 12.2.3_biqbaboplfbrettd7655fr4n2y
+  next-axiom: 0.11.0_next@12.2.3
   next-themes: 0.2.0_53oqlnqnxhbetdy4ljlkkvmoby
   notion-client: 6.12.12
   notion-types: 6.12.6
@@ -2427,6 +2429,16 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
+  /next-axiom/0.11.0_next@12.2.3:
+    resolution: {integrity: sha512-E1WQ5v51m/3/ljTDVNGGTVtvd/Tx1QZOSkNwXe/Rs8xDLLDZ3sG72MofxnSpuVSQyZnjEUUt3/aDfHMVwikkvw==}
+    engines: {node: '>=15'}
+    peerDependencies:
+      next: ^12.1.4
+    dependencies:
+      next: 12.2.3_biqbaboplfbrettd7655fr4n2y
+      whatwg-fetch: 3.6.2
+    dev: false
+
   /next-themes/0.2.0_53oqlnqnxhbetdy4ljlkkvmoby:
     resolution: {integrity: sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==}
     peerDependencies:
@@ -3563,6 +3575,10 @@ packages:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /whatwg-fetch/3.6.2:
+    resolution: {integrity: sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==}
     dev: false
 
   /which-boxed-primitive/1.0.2:
