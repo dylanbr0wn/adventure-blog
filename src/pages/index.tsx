@@ -6,9 +6,9 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import dayjs from "dayjs";
 import Link from "next/link";
 import Header from "../components/header";
-import { getTagColor } from "../utils/utils";
 import Footer from "../components/footer";
 import Main from "../components/main";
+import Vibrate from "../utils/deterministic-color";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
@@ -131,10 +131,16 @@ const Home: NextPage<{
 												{tags.map((tag, i) => {
 													return (
 														<div
+															style={{
+																backgroundColor: Vibrate(tag, {
+																	colorProfile: "pastel",
+																}),
+																color: Vibrate(tag, {
+																	colorProfile: "dark",
+																}),
+															}}
 															key={i}
-															className={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm ${getTagColor(
-																tag
-															)}`}
+															className={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm `}
 														>
 															{tag}
 														</div>

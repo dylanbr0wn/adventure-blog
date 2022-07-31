@@ -16,6 +16,7 @@ specifiers:
   dayjs: ^1.11.4
   eslint: 8.18.0
   eslint-config-next: 12.2.3
+  hsluv: ^0.1.0
   next: 12.2.3
   next-axiom: ^0.11.0
   next-themes: ^0.2.0
@@ -44,6 +45,7 @@ dependencies:
   '@trpc/react': 9.26.2_4zadt2mtfbx7275mbcwrjz2noe
   '@trpc/server': 9.26.2
   dayjs: 1.11.4
+  hsluv: 0.1.0
   next: 12.2.3_biqbaboplfbrettd7655fr4n2y
   next-axiom: 0.11.0_next@12.2.3
   next-themes: 0.2.0_53oqlnqnxhbetdy4ljlkkvmoby
@@ -1983,6 +1985,10 @@ packages:
 
   /hotkeys-js/3.9.4:
     resolution: {integrity: sha512-2zuLt85Ta+gIyvs4N88pCYskNrxf1TFv3LR9t5mdAZIX8BcgQQ48F2opUptvHa6m8zsy5v/a0i9mWzTrlNWU0Q==}
+    dev: false
+
+  /hsluv/0.1.0:
+    resolution: {integrity: sha512-ERcanKLAszD2XN3Vh5r5Szkrv9q0oSTudmP0rkiKAGM/3NMc9FLmMZBB7TSqTaXJfSDBOreYTfjezCOYbRKqlw==}
     dev: false
 
   /http-cache-semantics/4.1.0:

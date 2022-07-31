@@ -1,22 +1,16 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { fetchTable, notion } from "../../utils/notion";
-
 import dayjs from "dayjs";
 import Link from "next/link";
 import Header from "../../components/header";
-import { getTagColor } from "../../utils/utils";
 import Footer from "../../components/footer";
 import Main from "../../components/main";
-import { defaultMapPageUrl, NotionRenderer } from "react-notion-x";
+import { NotionRenderer } from "react-notion-x";
 import { ExtendedRecordMap } from "notion-types";
 import Image from "next/future/image";
-import {
-	getAllPagesInSpace,
-	getPageImageUrls,
-	getPageProperty,
-	getPageTitle,
-} from "notion-utils";
+import { getPageProperty, getPageTitle } from "notion-utils";
+import Vibrate from "../../utils/deterministic-color";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const id = ctx.params?.id as string;
@@ -157,9 +151,15 @@ const BlogPage: NextPage<{
 							return (
 								<div
 									key={i}
-									className={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm ${getTagColor(
-										tag
-									)}`}
+									style={{
+										backgroundColor: Vibrate(tag, {
+											colorProfile: "pastel",
+										}),
+										color: Vibrate(tag, {
+											colorProfile: "dark",
+										}),
+									}}
+									className={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm `}
 								>
 									{tag}
 								</div>

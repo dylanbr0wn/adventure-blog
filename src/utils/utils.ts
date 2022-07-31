@@ -1,16 +1,5 @@
-import {
-	DecorationType,
-	ColumnType,
-	RowContentType,
-	BlockType,
-	RowType,
-} from "./types";
-
-export const idToUuid = (path: string) =>
-	`${path.substr(0, 8)}-${path.substr(8, 4)}-${path.substr(
-		12,
-		4
-	)}-${path.substr(16, 4)}-${path.substr(20)}`;
+import { idToUuid } from "notion-utils";
+import { DecorationType, ColumnType, RowContentType, RowType } from "./types";
 
 export const parsePageId = (id: string) => {
 	if (id) {
@@ -82,19 +71,19 @@ const getTextContent = (text: DecorationType[]) => {
 	return text.reduce((prev, current) => prev + current[0], "");
 };
 
-export const getTagColor = (tag: string) => {
-	switch (tag) {
-		case "Day Hike":
-			return "bg-red-200 text-red-700";
-		case "Overnight":
-			return "bg-violet-200 text-violet-700";
-		case "Alpine":
-			return "bg-blue-200 text-blue-700";
-		case "Coastal":
-			return "bg-green-200 text-green-700";
-		case "Multi-Day":
-			return "bg-orange-200 text-orange-700";
-		default:
-			return "bg-neutral-200 text-neutral-700";
-	}
-};
+// export const getTagColor = (tag: string) => {
+// 	switch (tag) {
+// 		case "Day Hike":
+// 			return "bg-red-200 text-red-700";
+// 		case "Overnight":
+// 			return "bg-violet-200 text-violet-700";
+// 		case "Alpine":
+// 			return "bg-blue-200 text-blue-700";
+// 		case "Coastal":
+// 			return "bg-green-200 text-green-700";
+// 		case "Multi-Day":
+// 			return "bg-orange-200 text-orange-700";
+// 		default:
+// 			return "bg-neutral-200 text-neutral-700";
+// 	}
+// };
