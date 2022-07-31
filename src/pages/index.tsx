@@ -141,7 +141,7 @@ const Home: NextPage<{
 													);
 												})}
 											</div>
-											<p className="line-clamp-3">{description}</p>
+											<p className="line-clamp-3 text-xs">{description}</p>
 										</div>
 									</article>
 								</a>

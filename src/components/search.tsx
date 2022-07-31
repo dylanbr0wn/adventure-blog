@@ -5,7 +5,7 @@ import { trpc } from "../utils/trpc";
 import * as React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { flushSync } from "react-dom";
-import { getBlockTitle, getPageTitle } from "notion-utils";
+import { getBlockTitle, getPageProperty, getPageTitle } from "notion-utils";
 import {
 	Block,
 	ExtendedRecordMap,
@@ -110,6 +110,14 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 
 					const isSelected = i === selected;
 
+					const props = result.page?.properties ?? {};
+
+					const desc = props["lXCB"]?.at(0)?.at(0);
+
+					// const props = result?.page?.properties ?? {};
+
+					// console.log(props["t{T["]?.at(0)?.at(0) === "Yes");
+
 					return (
 						<button
 							key={result.id}
@@ -128,13 +136,13 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 								</div>
 								{result.highlight?.html ? (
 									<div
-										className="line-clamp-1"
+										className="text-xs"
 										dangerouslySetInnerHTML={{
 											__html: result.highlight?.html ?? "",
 										}}
 									></div>
 								) : (
-									<div className="line-clamp-1 text-sm">{result.title}</div>
+									<div className="line-clamp-1 text-sm">{desc}</div>
 								)}
 							</div>
 							<div className=" my-auto ">
@@ -211,7 +219,7 @@ const Search = () => {
 						<div className="fixed inset-0 bg-black bg-opacity-25" />
 					</Transition.Child>
 
-					<div className="fixed top-10 md:top-1/2 transform -translate-y-1/2 inset-x-0 overflow-y-auto w-full">
+					<div className="fixed top-10 md:top-1/2 transform md:-translate-y-1/2 inset-x-0 overflow-y-auto w-full">
 						<div className="flex min-h-full items-center justify-center p-10 text-center ">
 							<Transition.Child
 								as={React.Fragment}
@@ -222,7 +230,7 @@ const Search = () => {
 								leaveFrom="opacity-100 scale-100"
 								leaveTo="opacity-0 scale-95"
 							>
-								<Dialog.Panel className="w-full  md:w-2/5 transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all">
+								<Dialog.Panel className="w-full md:w-2/3  xl:w-2/5 transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all">
 									<SearchModalContent closeModal={closeModal} />
 								</Dialog.Panel>
 							</Transition.Child>
