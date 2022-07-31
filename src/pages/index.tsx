@@ -71,6 +71,10 @@ const Home: NextPage<{
 				/>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="theme-color" content="#171717"></meta>
+				<meta
+					name="google-site-verification"
+					content="5zVAlNs4LjEzKU5g8YOjEow-xUYS61ORRa7B2I3qppg"
+				/>
 			</Head>
 			<Header />
 
