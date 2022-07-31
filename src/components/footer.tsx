@@ -1,7 +1,7 @@
 const Footer = () => {
 	return (
-		<footer className="h-10 w-screen flex justify-center text-sm">
-			<div className="my-auto">
+		<footer className="h-10 w-screen flex justify-center text-xs text-neutral-500">
+			<div className="my-auto px-3 text-center">
 				Made with and inspired by{" "}
 				<a className="hover:underline font-semibold" href="https://notion.so">
 					notion

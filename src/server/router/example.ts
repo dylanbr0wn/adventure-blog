@@ -71,10 +71,8 @@ export const exampleRouter = createRouter().query("query", {
 				return newResult;
 			})
 			.filter((result) => {
-				console.log(result);
 				if (!result) return false;
 				const props = result.page?.properties ?? {};
-				// if(result.block.)
 				if (props["t{T["]?.at(0)?.at(0) !== "Yes") return false;
 				return true;
 			});

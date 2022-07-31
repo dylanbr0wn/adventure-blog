@@ -95,10 +95,10 @@ const Home: NextPage<{
 			<Header />
 
 			<Main>
-				<h1 className="text-4xl text-center font-bold pb-20 text-neutral-700 dark:text-neutral-300">
+				<h1 className="text-4xl text-center font-bold  md:pb-10 text-neutral-700 dark:text-neutral-300">
 					{title}
 				</h1>
-				<div ref={parent} className="flex flex-col space-y-2">
+				<div ref={parent} className="flex flex-col space-y-2 p-2">
 					{tableData.map((row) => {
 						const thumbnail = row.Thumbnail as [
 							{ name: string; rawUrl: string; url: string }
@@ -112,14 +112,14 @@ const Home: NextPage<{
 						return (
 							<Link key={row.id} href={`/${row.id}`}>
 								<a>
-									<article className="flex rounded-lg  overflow-hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors p-3">
-										<div>
+									<article className="flex flex-col md:flex-row rounded-lg  overflow-hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors p-3">
+										<div className="">
 											<img
-												className="w-48 h-48 object-cover rounded-lg "
+												className="w-full md:w-48 h-48 object-cover rounded-lg "
 												src={thumbnail[0].url}
 											/>
 										</div>
-										<div className="flex flex-col py-3 px-5 w-96 h-48">
+										<div className="flex flex-col py-3 px-5 md:w-96 md:h-48">
 											<div className="text-neutral-400 pt-1">
 												{dayjs(created_time).format("D/MM/YYYY")}
 											</div>

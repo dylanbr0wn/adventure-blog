@@ -5,13 +5,8 @@ import { trpc } from "../utils/trpc";
 import * as React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { flushSync } from "react-dom";
-import { getBlockTitle, getPageProperty, getPageTitle } from "notion-utils";
-import {
-	Block,
-	ExtendedRecordMap,
-	RecordMap,
-	SearchResult,
-} from "notion-types";
+import { getBlockTitle } from "notion-utils";
+import { ExtendedRecordMap } from "notion-types";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useRouter } from "next/router";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -113,10 +108,6 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 					const props = result.page?.properties ?? {};
 
 					const desc = props["lXCB"]?.at(0)?.at(0);
-
-					// const props = result?.page?.properties ?? {};
-
-					// console.log(props["t{T["]?.at(0)?.at(0) === "Yes");
 
 					return (
 						<button
