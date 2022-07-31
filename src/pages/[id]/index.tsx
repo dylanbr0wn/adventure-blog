@@ -3,7 +3,6 @@ import Head from "next/head";
 import { fetchPage, fetchTable, notion, Row } from "../../utils/notion";
 
 import dayjs from "dayjs";
-import { ArrowLeft, Search } from "react-feather";
 import Link from "next/link";
 import Header from "../../components/header";
 import { getTagColor } from "../../utils/utils";

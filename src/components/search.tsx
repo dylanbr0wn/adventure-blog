@@ -4,7 +4,6 @@ import { IoMdReturnLeft } from "react-icons/io";
 import { trpc } from "../utils/trpc";
 import * as React from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import Link from "next/link";
 import { flushSync } from "react-dom";
 import { getBlockTitle, getPageTitle } from "notion-utils";
 import {
@@ -16,22 +15,6 @@ import {
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useRouter } from "next/router";
 import { useHotkeys } from "react-hotkeys-hook";
-
-type ExtendedSearchResults =
-	| {
-			results: (SearchResult & {
-				title?: string | undefined;
-				block?: Block | undefined;
-				recordMap?: RecordMap | undefined;
-				page?: Block | undefined;
-				highlight: {
-					html?: string;
-				};
-			})[];
-			recordMap: RecordMap;
-			total: number;
-	  }
-	| undefined;
 
 function useDebounce<T>(value: T, delay?: number): T {
 	const [debouncedValue, setDebouncedValue] = React.useState<T>(value);
@@ -58,19 +41,16 @@ const SearchModalContent = ({ closeModal }: { closeModal: () => void }) => {
 	};
 	const debouncedSearch = useDebounce(search, 400);
 
-	const { data, refetch, isFetching } = trpc.useQuery(
-		["search.query", { query: debouncedSearch }],
-		{
-			refetchOnMount: true,
-			refetchOnWindowFocus: false,
-			refetchOnReconnect: false,
-			onSuccess(data) {
-				console.log(data);
-			},
-			// enabled: search.length > 0,
-			onSettled: () => setLoading(false),
-		}
-	);
+	const { data } = trpc.useQuery(["search.query", { query: debouncedSearch }], {
+		refetchOnMount: true,
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: false,
+		onSuccess(data) {
+			console.log(data);
+		},
+		// enabled: search.length > 0,
+		onSettled: () => setLoading(false),
+	});
 
 	const [parent] = useAutoAnimate<HTMLDivElement>();
 
@@ -189,14 +169,6 @@ const Search = () => {
 	useHotkeys<HTMLDivElement>("command+k,ctrl+k", () => {
 		setIsOpen(true);
 	});
-
-	// React.useEffect(() => {
-	// 	console.log(k, commandLeft);
-	// 	if (commandLeft && k) {
-	// 		setIsOpen(true);
-	// 	}
-	// }, [commandLeft, k]);
-
 	return (
 		<>
 			<button
