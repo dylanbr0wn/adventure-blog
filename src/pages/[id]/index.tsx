@@ -123,6 +123,10 @@ const BlogPage: NextPage<{
 					property="twitter:url"
 					content={`https://adventure-blog.vercel.app/${id}`}
 				/>
+				<meta
+					name="google-site-verification"
+					content="5zVAlNs4LjEzKU5g8YOjEow-xUYS61ORRa7B2I3qppg"
+				/>
 				<meta property="twitter:title" content={pageTitle} />
 				<meta property="twitter:description" content={desc} />
 				<meta property="twitter:image" content={thumbnail}></meta>

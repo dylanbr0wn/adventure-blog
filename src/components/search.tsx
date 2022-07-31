@@ -211,8 +211,8 @@ const Search = () => {
 						<div className="fixed inset-0 bg-black bg-opacity-25" />
 					</Transition.Child>
 
-					<div className="fixed top-1/4 inset-x-0 overflow-y-auto w-full">
-						<div className="flex min-h-full items-center justify-center p-4 text-center ">
+					<div className="fixed top-10 md:top-1/2 transform -translate-y-1/2 inset-x-0 overflow-y-auto w-full">
+						<div className="flex min-h-full items-center justify-center p-10 text-center ">
 							<Transition.Child
 								as={React.Fragment}
 								enter="ease-out duration-300"
@@ -222,7 +222,7 @@ const Search = () => {
 								leaveFrom="opacity-100 scale-100"
 								leaveTo="opacity-0 scale-95"
 							>
-								<Dialog.Panel className="w-[40%] transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all">
+								<Dialog.Panel className="w-full  md:w-2/5 transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all">
 									<SearchModalContent closeModal={closeModal} />
 								</Dialog.Panel>
 							</Transition.Child>
