@@ -52,7 +52,7 @@ const Home: NextPage<{
 				/>
 				<meta
 					property="og:image"
-					content="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0920d4a6-94e6-4d4f-8895-4477caca82c0%2FIMG_0085.jpeg?table=block&id=fed2dac5-4715-46b6-acef-f0b8e2b82409&spaceId=db385518-0177-4ea1-8abe-68e425d4cb80&width=600&userId=07871874-2f15-4324-b8e9-25e01c2b038a&cache=v2"
+					content="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe05e1ac1-d080-4e5a-816e-b2609152ea12%2F2018-10-08_01.07.59_1.jpg?table=block&id=fed2dac5-4715-46b6-acef-f0b8e2b82409&spaceId=db385518-0177-4ea1-8abe-68e425d4cb80&width=600&userId=07871874-2f15-4324-b8e9-25e01c2b038a&cache=v2"
 				/>
 
 				<meta property="twitter:card" content="summary_large_image" />
@@ -67,7 +67,7 @@ const Home: NextPage<{
 				/>
 				<meta
 					property="twitter:image"
-					content="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0920d4a6-94e6-4d4f-8895-4477caca82c0%2FIMG_0085.jpeg?table=block&id=fed2dac5-4715-46b6-acef-f0b8e2b82409&spaceId=db385518-0177-4ea1-8abe-68e425d4cb80&width=600&userId=07871874-2f15-4324-b8e9-25e01c2b038a&cache=v2"
+					content="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe05e1ac1-d080-4e5a-816e-b2609152ea12%2F2018-10-08_01.07.59_1.jpg?table=block&id=fed2dac5-4715-46b6-acef-f0b8e2b82409&spaceId=db385518-0177-4ea1-8abe-68e425d4cb80&width=600&userId=07871874-2f15-4324-b8e9-25e01c2b038a&cache=v2"
 				/>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="theme-color" content="#171717"></meta>
