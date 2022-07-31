@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { notion } from "../../utils/notion";
+import { fetchTable, notion } from "../../utils/notion";
 
 import dayjs from "dayjs";
 import Link from "next/link";
@@ -64,27 +64,19 @@ export async function getStaticPaths() {
 		};
 	}
 
-	const mapPageUrl = defaultMapPageUrl("f13fd760a7a548d489d309fb7c17a4d1");
+	const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
 
 	// This crawls all public pages starting from the given root page in order
 	// for next.js to pre-generate all pages via static site generation (SSG).
 	// This is a useful optimization but not necessary; you could just as easily
 	// set paths to an empty array to not pre-generate any pages at build time.
-	const pages = await getAllPagesInSpace(
-		"f13fd760a7a548d489d309fb7c17a4d1",
-		undefined,
-		notion.getPage,
-		{
-			traverseCollections: false,
-		}
-	);
+	const paths = table
+		.filter((page) => page.Published)
+		.map((page) => ({ params: { id: page.id } }));
 
-	const paths = Object.keys(pages)
-		.map((pageId) => mapPageUrl(pageId))
-		.filter((path) => path && path !== "/");
 	return {
 		paths,
-		fallback: true,
+		fallback: false,
 	};
 }
 

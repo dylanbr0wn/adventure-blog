@@ -9,7 +9,6 @@ import Header from "../components/header";
 import { getTagColor } from "../utils/utils";
 import Footer from "../components/footer";
 import Main from "../components/main";
-import { getPageImageUrls } from "notion-utils";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
