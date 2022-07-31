@@ -188,14 +188,14 @@ const Search = () => {
 					});
 					// ref.current?.focus();
 				}}
-				className="my-auto space-x-2 flex px-3 py-2 focus-visible:ring-0 outline-none rounded-lg  hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-400"
+				className="my-auto md:space-x-2 flex px-2 md:px-3 py-2 focus-visible:ring-0 outline-none rounded-lg  hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-400"
 			>
-				<div>Search...</div>
-				<div className="bg-neutral-200 dark:bg-neutral-700 my-auto py-0.5 px-1 rounded text-neutral-500 dark:text-neutral-400 text-xs flex items-center">
+				<div className="hidden md:block">Search...</div>
+				<div className="hidden md:flex bg-neutral-200 dark:bg-neutral-700 my-auto py-0.5 px-1 rounded text-neutral-500 dark:text-neutral-400 text-xs  items-center">
 					{isMac ? <FiCommand className="h-3 w-3" /> : <div>Ctrl</div>}
 					<div> + K</div>
 				</div>
-				<SearchIcon className="h-6 w-6 text-neutral-400 ml-2" />
+				<SearchIcon className="h-6 w-6 text-neutral-400 md:ml-2" />
 			</button>
 			<Transition appear show={isOpen} as={React.Fragment}>
 				<Dialog as="div" className="relative z-10" onClose={closeModal}>

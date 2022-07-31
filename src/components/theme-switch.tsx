@@ -1,5 +1,3 @@
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { Transition } from "@headlessui/react";
 import { a, config, useTransition } from "@react-spring/web";
 import { useTheme } from "next-themes";
 import { FiMoon, FiSun } from "react-icons/fi";

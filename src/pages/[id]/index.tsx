@@ -132,6 +132,7 @@ const BlogPage: NextPage<{
 					components={{
 						nextImage: Image,
 						nextLink: Link,
+
 						// Header: NotionPageHeader,
 						// Modal,
 					}}
