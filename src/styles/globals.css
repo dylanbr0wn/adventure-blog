@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark .notion-asset-caption {
+	@apply text-neutral-500;
+}
