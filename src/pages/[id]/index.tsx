@@ -8,7 +8,6 @@ import Footer from "../../components/footer";
 import Main from "../../components/main";
 import { NotionRenderer } from "react-notion-x";
 import { ExtendedRecordMap } from "notion-types";
-import Image from "next/future/image";
 import { getPageProperty, getPageTitle } from "notion-utils";
 import Vibrate from "../../utils/deterministic-color";
 
@@ -181,7 +180,6 @@ const BlogPage: NextPage<{
 					showTableOfContents={false}
 					pageTitle={<div />}
 					components={{
-						nextImage: Image,
 						nextLink: Link,
 
 						// Header: NotionPageHeader,
