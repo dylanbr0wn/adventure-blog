@@ -9,7 +9,7 @@ import Main from "../../components/main";
 import { NotionRenderer } from "react-notion-x";
 import { ExtendedRecordMap } from "notion-types";
 import { getPageProperty, getPageTitle } from "notion-utils";
-import Vibrate from "../../utils/deterministic-color";
+import { deter_dark, deter_pastel } from "../../utils/color";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const id = ctx.params?.id as string;
@@ -151,12 +151,8 @@ const BlogPage: NextPage<{
 								<div
 									key={i}
 									style={{
-										backgroundColor: Vibrate(tag, {
-											colorProfile: "pastel",
-										}),
-										color: Vibrate(tag, {
-											colorProfile: "dark",
-										}),
+										backgroundColor: deter_pastel.getColor(tag),
+										color: deter_dark.getColor(tag),
 									}}
 									className={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm `}
 								>

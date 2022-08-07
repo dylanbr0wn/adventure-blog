@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { fetchTable, Row } from "../utils/notion";
@@ -8,7 +9,7 @@ import Link from "next/link";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Main from "../components/main";
-import Vibrate from "../utils/deterministic-color";
+import { deter_dark, deter_pastel } from "../utils/color";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
@@ -115,6 +116,7 @@ const Home: NextPage<{
 									<article className="flex flex-col md:flex-row rounded-lg  overflow-hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors p-3">
 										<div className="">
 											<img
+												alt={(row?.Name as string) ?? ""}
 												className="w-full md:w-48 h-48 object-cover rounded-lg "
 												src={thumbnail[0].url}
 											/>
@@ -132,12 +134,8 @@ const Home: NextPage<{
 													return (
 														<div
 															style={{
-																backgroundColor: Vibrate(tag, {
-																	colorProfile: "pastel",
-																}),
-																color: Vibrate(tag, {
-																	colorProfile: "dark",
-																}),
+																backgroundColor: deter_pastel.getColor(tag),
+																color: deter_dark.getColor(tag),
 															}}
 															key={i}
 															className={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm `}

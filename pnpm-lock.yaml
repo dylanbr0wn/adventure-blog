@@ -14,6 +14,7 @@ specifiers:
   '@types/react-dom': 18.0.5
   autoprefixer: ^10.4.7
   dayjs: ^1.11.4
+  determinatic: ^1.0.1
   eslint: 8.18.0
   eslint-config-next: 12.2.3
   hsluv: ^0.1.0
@@ -45,6 +46,7 @@ dependencies:
   '@trpc/react': 9.26.2_4zadt2mtfbx7275mbcwrjz2noe
   '@trpc/server': 9.26.2
   dayjs: 1.11.4
+  determinatic: 1.0.1
   hsluv: 0.1.0
   next: 12.2.3_biqbaboplfbrettd7655fr4n2y
   next-axiom: 0.11.0_next@12.2.3
@@ -1344,6 +1346,12 @@ packages:
       defined: 1.0.0
       minimist: 1.2.6
     dev: true
+
+  /determinatic/1.0.1:
+    resolution: {integrity: sha512-m2CGyyG3CVLZPQ47tvVGfp3D4JEmIUo4bhCcZ7H5aexhys7rZq7D4DhYsWvZmLCBGZFt8hqnEUwpSxsa4lpdEA==}
+    dependencies:
+      hsluv: 0.1.0
+    dev: false
 
   /didyoumean/1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
