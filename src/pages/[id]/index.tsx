@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			desc,
 			thumbnail,
 		},
-		revalidate: 60 * 60 * 24 * 30, //once every month
+		revalidate: 60, //once every month
 	};
 };
 
