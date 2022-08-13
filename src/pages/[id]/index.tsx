@@ -11,6 +11,13 @@ import { ExtendedRecordMap } from "notion-types";
 import { getPageProperty, getPageTitle } from "notion-utils";
 import { deter_dark, deter_pastel } from "../../utils/color";
 
+import { Block } from "notion-types";
+import { defaultMapImageUrl } from "react-notion-x";
+
+export const mapImageUrl = (url: string, block: Block) => {
+	return defaultMapImageUrl(url, block) || url;
+};
+
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const id = ctx.params?.id as string;
 	const recordMap = await notion.getPage(id);
@@ -175,6 +182,7 @@ const BlogPage: NextPage<{
 					disableHeader={true}
 					showTableOfContents={false}
 					pageTitle={<div />}
+					mapImageUrl={mapImageUrl}
 					components={{
 						nextLink: Link,
 
