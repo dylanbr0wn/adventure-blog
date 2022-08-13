@@ -13,6 +13,7 @@ import { deter_dark, deter_pastel } from "../../utils/color";
 
 import { Block } from "notion-types";
 import { defaultMapImageUrl } from "react-notion-x";
+import Image from "next/future/image";
 
 export const mapImageUrl = (url: string, block: Block) => {
 	return defaultMapImageUrl(url, block) || url;
@@ -185,7 +186,7 @@ const BlogPage: NextPage<{
 					mapImageUrl={mapImageUrl}
 					components={{
 						nextLink: Link,
-
+						nextImage: Image,
 						// Header: NotionPageHeader,
 						// Modal,
 					}}
