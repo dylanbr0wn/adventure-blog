@@ -21,7 +21,10 @@ export const mapImageUrl = (url: string, block: Block) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const id = ctx.params?.id as string;
-	const recordMap = await notion.getPage(id);
+	const recordMap = await notion.getPage(id, {
+		concurrency: 4,
+		fetchMissingBlocks: true,
+	});
 
 	let title = getPageTitle(recordMap);
 
@@ -65,7 +68,10 @@ export async function getStaticPaths() {
 		};
 	}
 
-	const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
+	const table = await fetchTable(
+		"f13fd760a7a548d489d309fb7c17a4d1",
+		process.env.NOTION_AUTH_TOKEN
+	);
 
 	// This crawls all public pages starting from the given root page in order
 	// for next.js to pre-generate all pages via static site generation (SSG).
