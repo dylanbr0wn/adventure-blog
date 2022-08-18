@@ -15,8 +15,21 @@ import { Block } from "notion-types";
 import { defaultMapImageUrl } from "react-notion-x";
 import Image from "next/future/image";
 
-export const mapImageUrl = (url: string, block: Block) => {
-	return defaultMapImageUrl(url, block) || url;
+export const mapImageUrl = (image: string, block: Block) => {
+	const url = new URL(
+		`https://www.notion.so${
+			image.startsWith("/image") ? image : `/image/${encodeURIComponent(image)}`
+		}`
+	);
+
+	if (block && !image.includes("/images/page-cover/")) {
+		const table = block.parent_table === "space" ? "block" : block.parent_table;
+		url.searchParams.set("table", table);
+		url.searchParams.set("id", block.id);
+		url.searchParams.set("cache", "v2");
+	}
+
+	return url.toString();
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
