@@ -9,6 +9,7 @@
 		"preview": "astro preview",
 		"astro": "astro"
 	},
+	"packageManager": "pnpm@7.9.3",
 	"devDependencies": {
 		"@astrojs/image": "^0.3.4",
 		"@astrojs/mdx": "^0.10.0",
