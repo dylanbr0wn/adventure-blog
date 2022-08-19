@@ -1,0 +1,52 @@
+---
+import Theme from "./Theme.svelte";
+const { blogName } = Astro.props as { blogName: string };
+---
+
+<header class="h-14 w-screen fixed top-0 z-10 bg-white dark:bg-neutral-900">
+  <div class="mx-auto max-w-3xl px-3 flex h-full space-x-1 w-full">
+    <a href="/" class="my-auto flex-shrink truncate">
+      <div
+        class="px-2 py-0.5 text-3xl flex hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors rounded-lg"
+      >
+        <div class="transform -translate-y-1">🏔</div>
+        <h1
+          class="text-xl font-light ml-2 my-auto truncate text-ellipsis dark:text-white"
+        >
+          <b>M</b> + <b>D</b> Adventure Journal
+        </h1>
+      </div>
+    </a>
+    {
+      blogName && (
+        <>
+          <div class="my-auto text-xl text-neutral-400 font-light">/</div>
+
+          <a
+            href="#"
+            class="flex-shrink px-2 py-1 flex truncate  hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors rounded-lg my-auto cursor-pointer"
+          >
+            <h1 class="text-xl font-light py-0.5 text-ellipsis truncate">
+              {blogName}
+            </h1>
+          </a>
+        </>
+      )
+    }
+    <div class="flex-grow"></div>
+    <a href="/about" class="my-auto flex-shrink truncate">
+      <div
+        class="px-2 py-0.5 text-3xl flex hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors rounded-lg"
+      >
+        <h1
+          class="text-xl font-light my-auto truncate text-ellipsis text-neutral-400"
+        >
+          about
+        </h1>
+      </div>
+    </a>
+    <div class="w-14 h-14 flex items-center">
+      <Theme client:only="svelte" />
+    </div>
+  </div>
+</header>

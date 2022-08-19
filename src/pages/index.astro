@@ -1,0 +1,17 @@
+---
+import MainPage from "../components/MainPage.astro";
+import { fetchTable } from "../utils/notion";
+import Page from "../layouts/Page.astro";
+
+const table = await fetchTable("f13fd760a7a548d489d309fb7c17a4d1");
+const data = table.filter((row) => row.Published);
+---
+
+<Page
+  desc="The notes and scribbles of the adventures of Metea and Dylan."
+  title=""
+  pageTitle="M + D Adventure Blog"
+  thumbnail="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe05e1ac1-d080-4e5a-816e-b2609152ea12%2F2018-10-08_01.07.59_1.jpg?table=block&id=fed2dac5-4715-46b6-acef-f0b8e2b82409&spaceId=db385518-0177-4ea1-8abe-68e425d4cb80&width=600&userId=07871874-2f15-4324-b8e9-25e01c2b038a&cache=v2"
+>
+  <MainPage title="Home" tableData={data} />
+</Page>

@@ -1,0 +1,83 @@
+---
+import dayjs from "dayjs";
+import { Determinatic } from "determinatic";
+import { Image } from '@astrojs/image/components';
+import type { Row } from "../utils/notion";
+export interface Props {
+  title: string;
+  tableData: Row[];
+}
+const deter_dark = Determinatic({
+  colorProfile: "dark",
+});
+const deter_pastel = Determinatic({
+  colorProfile: "pastel",
+});
+
+const { title, tableData } = Astro.props as Props;
+---
+
+<h1
+  class="text-4xl text-center font-bold md:pb-10 text-neutral-700 dark:text-neutral-300"
+>
+  {title}
+</h1>
+<div class="flex flex-col space-y-2 p-2">
+  {
+    tableData.map((row) => {
+      const thumbnail = row.Thumbnail as [
+        { name: string; rawUrl: string; url: string }
+      ];
+      console.log(
+        thumbnail
+      )
+      const tags = row.Tags as string[];
+
+      const created_time = row.created_time as string;
+
+      const description = row.Description as string;
+      return (
+        <a href={`/${row.id}`}>
+          <article class="flex flex-col md:flex-row rounded-lg  overflow-hidden hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors p-3">
+            <div >
+              
+              
+               <img
+               
+                alt={(row?.Name as string) ?? ""}
+                class="w-full md:w-48 h-48 object-cover rounded-lg "
+                src={thumbnail[0].url}
+              />
+            </div>
+            <div class="flex flex-col py-3 px-5 md:w-96 md:h-48">
+              <div class="text-neutral-400 pt-1">
+                {dayjs(created_time).format("D/MM/YYYY")}
+              </div>
+
+              <div class="font-bold text-neutral-700 dark:text-neutral-300 text-3xl ">
+                {(row?.Name as string) ?? ""}
+              </div>
+              <div class="py-1 flex flex-wrap">
+                {tags.map((tag, i) => {
+                  return (
+                    <div
+                      style={{
+                        backgroundColor: deter_pastel.getColor(tag),
+                        color: deter_dark.getColor(tag),
+                      }}
+                      key={i}
+                      class={`px-2 py-0.5 rounded-full mr-0.5 my-0.5 text-sm `}
+                    >
+                      {tag}
+                    </div>
+                  );
+                })}
+              </div>
+              <p class="line-clamp-3 text-xs">{description}</p>
+            </div>
+          </article>
+        </a>
+      );
+    })
+  }
+</div>

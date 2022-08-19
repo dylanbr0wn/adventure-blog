@@ -1,0 +1,43 @@
+---
+import { fetchTable } from "../utils/notion";
+import { fetchPage } from "../utils/utils";
+import BlogPage from "../components/BlogPage";
+import Page from "../layouts/Page.astro";
+
+export async function getStaticPaths() {
+  const table = await fetchTable(
+    "f13fd760a7a548d489d309fb7c17a4d1",
+    process.env.NOTION_AUTH_TOKEN
+  );
+
+  const paths = table
+    .filter((page) => page.Published)
+    .map((page) => ({ params: { id: page.id } }));
+
+  return paths;
+}
+
+const { id } = Astro.params;
+
+const { recordMap, title, createdAt, tags, desc, thumbnail } = await fetchPage(
+  String(id)
+);
+const pageTitle = title
+  ? `${title} | M + D Adventure Blog`
+  : "M + D Adventure Blog";
+---
+
+<Page
+  title={title}
+  thumbnail={thumbnail}
+  id={String(id)}
+  desc={desc}
+  pageTitle={pageTitle}
+>
+  <BlogPage
+    title={title}
+    createdAt={createdAt}
+    recordMap={recordMap}
+    tags={tags}
+  />
+</Page>
